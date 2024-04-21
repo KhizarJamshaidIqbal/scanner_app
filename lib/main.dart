@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:scanner_app/scanner/pickImage.dart';
+import 'share/custom bottom navigation bar/custom_bottom_navigation_bar.dart';
 
 
 
@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Scanners',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PickImage(),
+      home: const CustomBottomNavigationbar(),
     );
   }
 }

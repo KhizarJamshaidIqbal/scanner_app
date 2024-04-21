@@ -42,6 +42,7 @@ dependencies:
   # tflite_flutter: ^0.10.4
   image_picker: ^0.8.4+11
   camera: ^0.9.4+1
+  flutter_svg: ^2.0.10+1
   # flutter_tflite: ^1.0.1
 
 dev_dependencies:
@@ -70,8 +71,13 @@ flutter:
   assets:
     - assets/images/
     - assets/model/
-    - assets/model/VGG16_NewModel.tflite
     - assets/model/labels.txt
+    - assets/model/VGG16/VGG16_NewModel.tflite
+    - assets/model/MobileNet/MobileNet_model_ac_90.tflite
+    - assets/model/EfficientNent/EfficientNent_ac_93.tflite
+    - assets/model/ResNet50/ResNet50_ac_83.tflite
+    
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
