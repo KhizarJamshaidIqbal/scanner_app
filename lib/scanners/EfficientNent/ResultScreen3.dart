@@ -52,11 +52,13 @@ class ResultScreen3 extends StatelessWidget {
           10.h,
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Text(
-              result.isNotEmpty ? result : 'No result',
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 28,
+            child: FittedBox(
+              child: Text(
+                result.isNotEmpty ? result : 'No result',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 28,
+                ),
               ),
             ),
           ),

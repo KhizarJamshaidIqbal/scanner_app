@@ -7,20 +7,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:scanner_app/constants/colors.dart';
-import 'package:scanner_app/scanners/MobileNet/ResultScreen.dart';
-import 'package:scanner_app/widgets/custom_appbar.dart';
+import 'package:scanner_app/scanners/MobileNet/ResultScreen2.dart';
 import 'package:tflite/tflite.dart';
-
-import '../ResNet50/ResultScreen.dart';
-import 'ResultScreen.dart';
-class ResNet50 extends StatefulWidget {
-  const ResNet50({Key? key}) : super(key: key);
+class MobileNet extends StatefulWidget {
+  const MobileNet({Key? key}) : super(key: key);
 
   @override
-  State<ResNet50> createState() => _ResNet50State();
+  State<MobileNet> createState() => _MobileNetState();
 }
 
-class _ResNet50State extends State<ResNet50> {
+class _MobileNetState extends State<MobileNet> {
   late String result = '', label = '';
   bool isWorking = false;
   bool isLoading = false;
@@ -34,7 +30,7 @@ class _ResNet50State extends State<ResNet50> {
   Future<void> loadModel() async {
     try {
       await Tflite.loadModel(
-        model: "assets/model/ResNet50/ResNet50_ac_83.tflite",
+        model: "assets/model/MobileNet/MobileNet_model_ac_90.tflite",
         labels: "assets/model/labels.txt",
       );
       print("Model loaded successfully");
@@ -82,7 +78,7 @@ class _ResNet50State extends State<ResNet50> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ResultScreen4(File(imageFile.path), result, label),
+              ResultScreen2(File(imageFile.path), result, label),
         ),
       );
     });

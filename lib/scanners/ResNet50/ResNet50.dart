@@ -7,20 +7,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:scanner_app/constants/colors.dart';
-import 'package:scanner_app/scanners/MobileNet/ResultScreen.dart';
-import 'package:scanner_app/widgets/custom_appbar.dart';
+import 'package:scanner_app/scanners/ResNet50/ResultScreen4.dart';
 import 'package:tflite/tflite.dart';
-
-import '../EfficientNent/ResultScreen.dart';
-import 'ResultScreen.dart';
-class EfficientNent extends StatefulWidget {
-  const EfficientNent({Key? key}) : super(key: key);
+class ResNet50 extends StatefulWidget {
+  const ResNet50({Key? key}) : super(key: key);
 
   @override
-  State<EfficientNent> createState() => _EfficientNentState();
+  State<ResNet50> createState() => _ResNet50State();
 }
 
-class _EfficientNentState extends State<EfficientNent> {
+class _ResNet50State extends State<ResNet50> {
   late String result = '', label = '';
   bool isWorking = false;
   bool isLoading = false;
@@ -37,7 +33,7 @@ class _EfficientNentState extends State<EfficientNent> {
         model: "assets/model/EfficientNent/EfficientNent_ac_93.tflite",
         labels: "assets/model/labels.txt",
       );
-      print("Model loaded successfully");
+      print("Model loaded successfully tflite");
     } catch (e) {
       print("Error loading model: $e");
     }
@@ -82,7 +78,7 @@ class _EfficientNentState extends State<EfficientNent> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ResultScreen3(File(imageFile.path), result, label),
+              ResultScreen4(File(imageFile.path), result, label),
         ),
       );
     });

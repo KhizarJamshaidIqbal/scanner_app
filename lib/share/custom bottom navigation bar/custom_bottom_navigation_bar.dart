@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scanner_app/constants/colors.dart';
 import 'package:scanner_app/widgets/custom_Text_Widget.dart';
-import '../../scanners/EfficientNent/pickImage.dart';
-import '../../scanners/MobileNet/pickImage.dart';
-import '../../scanners/ResNet50/pickImage.dart';
+import '../../scanners/EfficientNent/EfficientNent.dart';
+import '../../scanners/MobileNet/MobileNet.dart';
+import '../../scanners/ResNet50/ResNet50.dart';
 import '../../scanners/VGG16/pickImage.dart';
 import '../../widgets/custom_appbar.dart';
 
@@ -30,7 +30,7 @@ class _CustomBottomNavigationbarState extends State<CustomBottomNavigationbar> {
     EfficientNent(),
     ResNet50(),
   ];
-    List<String> AppbarTitleList = [
+  List<String> AppbarTitleList = [
     'VGG16',
     'MobileNet',
     "EfficientNent",
@@ -61,29 +61,24 @@ class _CustomBottomNavigationbarState extends State<CustomBottomNavigationbar> {
         unselectedItemColor: globalColors.BlackColor,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        items:  const [
-          BottomNavigationBarItem(
+        items: List.generate(
+          ScreenList.length,
+          (index) => BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.barcode_viewfinder),
-            label: 'VGG16',
+            label: AppbarTitleList[index],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.barcode_viewfinder),
-            label: 'MobileNet',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.barcode_viewfinder),
-            label: 'EfficientNent',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.barcode_viewfinder),
-            label: 'ResNet50',
-          ),
-        ],
+        ),
         currentIndex: _currentindex,
         onTap: (value) {
-          setState(() {
-            _currentindex = value;
-          });
+          try {
+            if (value >= 0 && value < ScreenList.length) {
+              setState(() {
+                _currentindex = value;
+              });
+            }
+          } catch (e) {
+            print(e);
+          }
         },
       ),
     );

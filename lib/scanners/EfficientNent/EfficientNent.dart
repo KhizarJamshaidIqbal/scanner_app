@@ -7,17 +7,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:scanner_app/constants/colors.dart';
-import 'package:scanner_app/scanners/MobileNet/ResultScreen.dart';
-import 'package:scanner_app/widgets/custom_appbar.dart';
+import 'package:scanner_app/scanners/EfficientNent/ResultScreen3.dart';
 import 'package:tflite/tflite.dart';
-class MobileNet extends StatefulWidget {
-  const MobileNet({Key? key}) : super(key: key);
+class EfficientNent extends StatefulWidget {
+  const EfficientNent({Key? key}) : super(key: key);
 
   @override
-  State<MobileNet> createState() => _MobileNetState();
+  State<EfficientNent> createState() => _EfficientNentState();
 }
 
-class _MobileNetState extends State<MobileNet> {
+class _EfficientNentState extends State<EfficientNent> {
   late String result = '', label = '';
   bool isWorking = false;
   bool isLoading = false;
@@ -31,7 +30,7 @@ class _MobileNetState extends State<MobileNet> {
   Future<void> loadModel() async {
     try {
       await Tflite.loadModel(
-        model: "assets/model/MobileNet/MobileNet_model_ac_90.tflite",
+        model: "assets/model/ResNet50/ResNet50_ac_83.tflite",
         labels: "assets/model/labels.txt",
       );
       print("Model loaded successfully");
@@ -50,9 +49,9 @@ class _MobileNetState extends State<MobileNet> {
     var recognitions = await Tflite.runModelOnImage(
       path: imageFile.path,
       imageMean: 117,
-      imageStd: 1.0,
+      imageStd: 1.5,
       numResults: 5,
-      threshold: 0.3,
+      threshold: 0.5,
     );
   
     setState(() {
@@ -79,7 +78,7 @@ class _MobileNetState extends State<MobileNet> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ResultScreen2(File(imageFile.path), result, label),
+              ResultScreen3(File(imageFile.path), result, label),
         ),
       );
     });

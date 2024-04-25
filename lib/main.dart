@@ -1,6 +1,4 @@
-import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
-import 'share/custom bottom navigation bar/custom_bottom_navigation_bar.dart';
+
 
 
 
